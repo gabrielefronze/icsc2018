@@ -1,0 +1,49 @@
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{underscore}
+\usepackage{xspace}
+
+\usepackage{tikz}
+    \usetikzlibrary{shadows}
+\usepackage{tcolorbox}
+    \tcbuselibrary{skins}
+
+\newcommand{\code}[1]{\mbox{\texttt{#1}}\xspace}
+\newcommand{\Set}{\code{Set}}
+\newcommand{\false}{\code{false}}
+\newcommand{\true}{\code{true}}
+\newcommand{\x}{\ensuremath{x}\xspace}
+\newcommand{\bigO}[1]{\ensuremath{\mathcal{O}(#1)}\xspace}
+
+\newcommand{\mytitle}[1]{
+    \node[fill=gray,
+        rounded corners,
+        draw=white,
+        line width=2pt,
+        drop shadow,
+        text width=.15\textwidth,
+        inner sep=8pt,
+        xshift=-4cm]
+    at (frame.north){\bfseries\textcolor{white}{#1}};
+}
+
+\newtcolorbox{mybox}[2][]{
+    enhanced,
+    enlarge top by=4ex,
+    enlarge bottom by=4ex,
+    overlay={\mytitle{#2}},
+    borderline={2pt}{0mm}{gray},
+    borderline={.7pt}{1mm}{gray},
+    frame hidden,
+    arc=3mm,
+    sidebyside,
+    lefthand width=.9\textwidth,
+    segmentation hidden,
+    top=4ex,
+    #1
+}
+
+\sloppy
+
