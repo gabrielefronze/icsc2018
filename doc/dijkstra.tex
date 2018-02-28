@@ -1,0 +1,24 @@
+\section{$\ast\ast$~Dijkstra's algorithm (Python)}
+
+In this module, you will implement Dijkstra's algorithm. A framework containing a \texttt{Graph} data structure and several test cases can be found in \code{dijkstra/dijkstra.py}. Everything below the method called \texttt{dijkstra} are test cases. The first is trivial, and the second is the one presented in the lectures.
+%
+\begin{mybox}{Questions}
+    \begin{enumerate}
+        \item Try to understand the structure of the three classes near the beginning of the file.
+        \item Look at the first two test cases, and see if you can map the nodes (vertices) and edges of the second test case to those in the lectures.
+    \end{enumerate}
+\end{mybox}
+
+Next, let's implement the actual algorithm! A skeleton implementation has been set up in the method \texttt{dijkstra}.
+%
+\begin{mybox}{Exercises}
+    \begin{enumerate}
+        \item Fill out the rest of the method.
+        \item Run the file (from the directory \code{dijkstra}). Do both test cases give the correct result?
+        \item Uncomment and run the third test case. You can comment out the first two to suppress some output. These are actual roads of Rome! (Ok, in 1999. And the vertices are represented by arbitrary numbers, so don't bother trying to find your house.)
+        \item Critically analyse the complexity of your implementation. Are there any calls in there that could perform slowly, such as calls to functions of built-in data structures?
+        \item Try and run the last test case. This one consists of almost 20 MB of California road data -- getting the complexity right is paramount for this one!
+        \item All edges in the last test case have equal weight~($1$). Can you use this knowledge to your advantage to speed up the runtime of your algorithm? Note that if you modify it under that assumption, the other test cases may not work anymore (unless you build a check into it; it's up to you if you want to do so).
+    \end{enumerate}
+\end{mybox}
+

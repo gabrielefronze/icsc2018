@@ -1,0 +1,40 @@
+\section{$\ast\ast$~Linked lists (C++)}
+
+Linked lists were presented in the lectures as an alternative to array-based sequential containers. This exercise explores some of their properties, strengths and weaknesses. The code relies heavily on \mbox{C++14} features -- don't hesitate to ask if you have any questions about that!
+
+The folder \code{linked_list} contains two source files: \code{linked_list.h} features an almost compelete (singly-)linked list implementation, and \code{main.cxx} has some code to test it. There's also a small shell script to compile the code.
+%
+\begin{mybox}{Exercises}
+    \begin{enumerate}
+        \item Run \code{./compile} to compile the code, then try running the code with \code{./main}. You should see some arrays of numbers printed.
+        \item The program prints the time in ms spent to allocate elements to a \code{linked_list} and an \code{std::vector}. Which one is faster?
+        \item Look at \code{main.cxx}. You can pass it a number as an argument to insert a different number of elements (the default is 10). Run it again with a larger number of elements. At what point does the performance of the vector overtake that of the linked list? (Comment the call to \code{print_all} to see all the output.)
+    \end{enumerate}
+\end{mybox}
+
+Now look at the linked list implementation. It features a lot of methods that coincide with the definitions of \code{std::vector}, including support for iteration (which is already used in the program to print the elements). However, there is a lot of duplicate and inefficient code.
+%
+\begin{mybox}{Exercises}
+    \begin{enumerate}
+        \item Copy \code{linked_list.h} to \code{linked_list_original.h} to preserve its original contents.
+        \item The current implementation of the \code{size} method is far less than optimal. Can you rewrite it so that it runs in \bigO{1}? You can (and should) change other parts of the class!
+        \item Add a reference to the last element of the linked list, and modify the \code{back} method to run in \bigO{1} by using it. Do you need to update any of the modifier methods (\code{push_front}, \code{push_back}, \code{pop_front}, and \code{pop_back}) to keep the reference up-to-date.
+        \item Modify \code{push_back} to use the field as well, then do the same with \code{pop_back}.
+        \item How much faster does your code run compared to the original file? You can easily check by including the original file rather than the modified one in \code{main.cxx}. And how does your performance compare to that of \code{linked_list_solution.h}? And to the STL implementation (\code{linked_list_std.h})?
+    \end{enumerate}
+\end{mybox}
+%
+\begin{mybox}{Questions}
+    \begin{enumerate}
+        \item What was the original complexity of the following methods?
+        \item And what is the compelxity of your new implementation?
+        \begin{itemize}
+            \item \code{size}
+            \item \code{push_front}
+            \item \code{push_back}
+            \item \code{pop_front}
+            \item \code{pop_back}
+        \end{itemize}
+    \end{enumerate}
+\end{mybox}
+

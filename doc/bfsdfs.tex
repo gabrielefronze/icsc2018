@@ -1,0 +1,33 @@
+\section{$\ast$~Breadth-first and depth-first search}
+
+Breadth-first search (BFS) and depth-first search (DFS) are two rather fundamental concepts in computer science. This quick exercise will familiarise you with them! You'll also implement both a Stack and a Queue in the process.
+
+DFS visits all nodes in a tree (or, in general, any graph structure) by starting at the head node, then moving along the first edge it sees. It keeps moving until it hits a node without children, after which it will backtrack to the last node it visited that still had children. We will implement this backtracking using a Stack. Once there are no more nodes with unvisited children, we are sure to have visited all the nodes! By itself this doesn't do anything yet, but this can be used to search for a node in the tree, or to apply an operation on each node of the tree.
+%
+\begin{mybox}{Exercises}
+    \begin{enumerate}
+        \item Go to the directory \code{trees} and open the file \code{dfs.py}.
+        \item Flesh out the Stack implementation, using the provided code (and a Python \texttt{list} as a backing data structure). What built-in methods can you use?
+        \item Now complete the DFS implementation.
+        \begin{enumerate}
+            \item Start by pushing the head of the tree (\code{tree.head}) onto the Stack.
+            \item Then loop until the Stack is empty, each time pushing the children of the current node onto the Stack.
+            \item Don't forget to add visited nodes to the \texttt{discovered} list!
+        \end{enumerate}
+        \item Check your implementations by running the script. It will print two trees and the result of your iteration. Do you visit all the nodes, in the right order?
+    \end{enumerate}
+\end{mybox}
+\clearpage
+
+BFS is very similar to DFS, except it exhausts all the children of the current node before moving on to their children. Another way to see it is that it traverses a tree level-by-level (from left to right in the ASCII visualisation provided by the script).
+%
+\begin{mybox}{Exercises}
+    \begin{enumerate}
+        \item Open the file \code{bfs.py}.
+        \item Flesh out the Queue implementation, again using a Python \texttt{list} and as many built-in methods as you can find.
+        \item Complete the BFS implementation. Note that it's very similar to DFS!
+        \item Again, check your implementations by running the script.
+        \item Run the larger example (\texttt{example3}) by uncommenting the last line (and removing the one above it) in \code{tree.py}, both for DFS and BFS. Does it work?
+    \end{enumerate}
+\end{mybox}
+

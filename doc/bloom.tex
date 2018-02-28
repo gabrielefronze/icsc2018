@@ -1,0 +1,33 @@
+\section{$\ast\ast\ast$~Bloom filters (Python)}
+
+A \emph{Bloom filter} is an implementation of the \Set ADT. For this exercise, assume this ADT supports the following operations:
+%
+\begin{description}
+    \item[\texttt{add(\x)}] Add item~\x to the \Set. If \x~was already in the \Set, return \false; otherwise add it and return \true.
+    \item[\texttt{contains(\x)}] Check and return whether item~\x is currently in the \Set.
+\end{description}
+%
+Bloom filters do not support a \texttt{remove} operation, so you won't have to worry about that!
+
+The Bloom filter is a stochastic data structure. That means there's a certain randomness to its operations. It functions not by storing the objects added to it, but rather by storing $k$~different hashes of the objects in a bit array of size~$m$. An object is added by calling each of the $k$~hash functions on it, finding the bins in the bit array corresponding to those hashes , and setting each of those $k$~bits to~$1$. To check whether an object is present, again each of the hash functions is called. If any of the bits is~$0$, the object is definitely not in the filter. If all the bits are~$1$, it probably is, but not necessarily -- these bits may also have been flipped by a combination of other objects! Therefore, it is possible to get false positives with a Bloom filter, but never false negatives. The advantage of this data structure is its extremely high space efficiency as compared to other data structures, such as hash tables.
+%
+\begin{mybox}{Questions}
+    \begin{enumerate}
+        \item What is the space complexity of a Bloom filter?
+        \item What is the time complexity of a Bloom filter for the operations described above?
+    \end{enumerate}
+\end{mybox}
+
+The file \code{bloom/bloom.py} contains a skeleton implementation of a Bloom filter class, as well as a small script to test it on words from \code{data/example_text.txt} and \code{data/random_strings.txt}. Make sure to run it from the \code{bloom} directory.
+%
+\begin{mybox}{Exercises}
+    \begin{enumerate}
+        \item Write the missing bodies for the \texttt{add} and \texttt{contains} methods. You may use the methods \code{__get_bit} and \code{__set_bit}. Note that \code{self.__hashes} is a list of functions!
+        \item Run the script. Do you get many false positives? And false negatives?
+        \item Increase~$m$. Does this help reduce the number of false positives?
+        \item Add some hash functions to \code{self.__hashes}. What are good choices to prevent overlap with existing hash functions?
+    \end{enumerate}
+\end{mybox}
+
+An example implementation with decent (but not perfect) performance can be found in \code{bloom/bloom_solution.py}.
+

@@ -1,0 +1,34 @@
+\section{$\ast$~Recursion and stack overflow (Python)}
+
+Recursive implementations can simplify many algorithms, such as the implementation of the Fibonacci sequence given in \code{recursion/recursion.py}. This script takes $n$~as an argument and outputs the \ensuremath{n^{\text{th}}}~Fibonacci number. The recursion lies in the fact that the method~\texttt{fib} repeatedly calls itself. This module is about inefficiencies and stack overflows (no, not the website).
+%
+\begin{mybox}{Exercises}
+    \begin{enumerate}
+        \item Run the example. Does it give the right answer?
+        \item Increase~$n$. What do you observe?
+        \item What is the complexity of this implementation?
+    \end{enumerate}
+\end{mybox}
+
+This implementation is rather terrible. We can speed it up a lot by using a cache.
+%
+\begin{mybox}{Exercises}
+    \begin{enumerate}
+        \item Modify the code by adding a global cache and storing each answer in that cache after calculating.
+        \item If a cached answer is available, just use it instead of recalculating the result!
+        \item Make sure your code works up to at least~$n = 500$.
+        \item Now try running with~$n = 1000$. What happens?
+    \end{enumerate}
+\end{mybox}
+
+When running code, the computer keeps track of all the called methods, so that it knows how to proceed once the current method returns. This is done in a buffer with a fixed size. That size is large enough that normally this causes no problems, but if we go very deep -- as a recursive algorithm very well may -- it is definitely possible to hit the limit. Let's fix the code!
+%
+\begin{mybox}{Exercises}
+    \begin{enumerate}
+        \item Modify the code, getting rid of the recursion. 
+        \item Yup, that's all -- good luck!
+    \end{enumerate}
+\end{mybox}
+%
+You can find a cached implementation of the recursive algorithm in \code{recursion/recursion_cache.py}, and a solution of the final exercise in \code{recursion/recursion_solution.py}.
+
