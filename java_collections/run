@@ -1,0 +1,4 @@
+if javac -Xlint JavaCollectionsTest.java; then
+    java -classpath . JavaCollectionsTest
+fi
+

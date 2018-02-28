@@ -17,6 +17,7 @@ To run the software you need at least the following:
 \begin{description}
     \item[Python] Python~2.7, 3.4 or newer. You can find an installation of Python~2.7.5 on CentOS~7 at \code{lxplus7.cern.ch}, under \code{/usr/bin/python}.
     \item[C++] A C++ compiler supporting C++11, such as GCC~4.8 or newer. You can find an installation of GCC~4.8.5 on CentOS~7 at \code{lxplus7.cern.ch}, under \code{/usr/bin/g++}. This should be referenced automatically by the Makefiles.
+    \item[Java] JDK version~1.8 or newer. This is also installed on \code{lxplus7}, and will be picked up by the scripts.
 \end{description}
 
 \clearpage
@@ -53,6 +54,28 @@ BFS is very similar to DFS, except it exhausts all the children of the current n
         \item Complete the BFS implementation. Note that it's very similar to DFS!
         \item Again, check your implementations by running the script.
         \item Run the larger example (\texttt{example3}) by uncommenting the last line (and removing the one above it) in \code{tree.py}, both for DFS and BFS. Does it work?
+    \end{enumerate}
+\end{mybox}
+
+\clearpage
+\section{$\ast$~Java collections (Java)}
+
+Java has very good out-of-the-box support for all the data structures discussed in the lectures. In this exercise, you will verify their complexity by running large numbers of operations on them. We'll be using the \code{java.util.Collection} interface, which is an interface common to all java collections. The advantage of this is that it supports similar operations through the same interface. For example, adding an object to a set and pushing an object to the back of an array both use the same method \code{add}.
+%
+\begin{mybox}{Exercises}
+    \begin{enumerate}
+        \item Look up the documentation of \code{java.util.Collection}. Try to understand what the different methods are supposed to be doing.
+        \item The program tests a collection by passing it (empty) to the method \code{runTest}. This method then reads a large number of strings from a text file, adds them to the collection, and performs various operations on it. Modify the code in \code{java_collections/JavaCollectionsTest.java} to pass it an empty \code{ArrayList} (an implementation of a dynamic array). This class is already imported in the file.
+        \item Run the code by executing \code{./run} in the \code{java_collections} directory. It should report the runtimes of various operations.
+        \item Run it again. What changed? Can you explain why?
+        \item Now run it with several different \code{Collection} instances, such as \code{LinkedList}, \code{TreeSet} and \code{HashSet}. Try to understand the differences in runtimes between them!
+            \begin{itemize}
+                \item Note that you can add print statements in between the tests to make the output easier to understand. In Java, you can print using \code{System.out.println}.
+            \end{itemize}
+        \item Some of these classes have constructor parameters to tune their initial configuration. Look up which of them do, and try to pass sensible values to improve the runtimes.
+            \begin{itemize}
+                \item If the runtime fluctuates too much to easily see the difference, try repeating the call to \code{readStrings} to increase the test sample size.
+            \end{itemize}
     \end{enumerate}
 \end{mybox}
 
