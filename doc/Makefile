@@ -1,4 +1,4 @@
-main.pdf: main.tex preamble.tex
+main.pdf: main.tex preamble.tex bfsdfs.tex  bloom.tex  dijkstra.tex  javacollections.tex  linkedlists.tex  recursion.tex
 	/opt/local/bin/latexmk -gg
 
 .PHONY: clean
