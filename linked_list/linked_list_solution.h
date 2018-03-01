@@ -3,6 +3,8 @@
 
 #include <memory>
 
+#include "make_unique.h"
+
 template<class T>
 class linked_list;
 
@@ -58,13 +60,13 @@ class linked_list
             ++current_size;
             if (!head)
             {
-                head = std::make_unique<node>(node(t));
+                head = make_unique<node>(node(t));
                 tail = &(*head);
                 return;
             }
 
             auto old_head = std::move(head);
-            head = std::make_unique<node>(node(t));
+            head = make_unique<node>(node(t));
             old_head->prev = &(*head);
             head->next = std::move(old_head);
         }
@@ -74,13 +76,13 @@ class linked_list
             ++current_size;
             if (!head)
             {
-                head = std::make_unique<node>(node(t));
+                head = make_unique<node>(node(t));
                 tail = &(*head);
                 return;
             }
 
             const auto old_tail = tail;
-            tail->next = std::make_unique<node>(node(t));
+            tail->next = make_unique<node>(node(t));
             tail = &(*tail->next);
             tail->prev = old_tail;
         }
