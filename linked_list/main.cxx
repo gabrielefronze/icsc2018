@@ -81,6 +81,13 @@ int main(int argc, char** argv)
     time([&v, &N_ITEMS] {
             for (std::remove_cv<decltype(N_ITEMS)>::type i = 0; i < N_ITEMS; ++i)
             {
+                v.size();
+            }
+        }, "vector size");
+
+    time([&v, &N_ITEMS] {
+            for (std::remove_cv<decltype(N_ITEMS)>::type i = 0; i < N_ITEMS; ++i)
+            {
                 v.pop_back();
             }
         }, "vector pop_back");
