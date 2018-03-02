@@ -5,7 +5,7 @@ Java has very good out-of-the-box support for all the data structures discussed 
 \begin{mybox}{Exercises}
     \begin{enumerate}
         \item Look up the documentation of \code{java.util.Collection}. Try to understand what the different methods are supposed to be doing.
-        \item The program tests a collection by passing it (empty) to the method \code{runTest}. This method then reads a large number of strings from a text file, adds them to the collection, and performs various operations on it. Modify the code in \code{java_collections/JavaCollectionsTest.java} to pass it an empty \code{ArrayList} (an implementation of a dynamic array). This class is already imported in the file.
+        \item The code in \code{java_collections/JavaCollectionsTest.java} tests a collection by passing it (empty) to the method \code{runTest}. This method then reads a large number of strings from a text file, adds them to the collection, and performs various operations on it. Modify the code to pass it an empty \code{ArrayList} (an implementation of a dynamic array). This class is already imported in the file.
         \item Run the code by executing \code{./run} in the \code{java_collections} directory. It should report the runtimes of various operations.
         \item Run it again. What changed? Can you explain why?
         \item Now run it with several different \code{Collection} instances, such as \code{LinkedList}, \code{TreeSet} and \code{HashSet}. Try to understand the differences in runtimes between them!

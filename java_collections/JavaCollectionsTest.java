@@ -17,7 +17,8 @@ public class JavaCollectionsTest
 
     public static void main(String[] args)
     {
-        runTest(new ArrayList<>());
+        // TODO pass runTest an empty collection to test it
+        runTest(...);
     }
 
     public static void runTest(final Collection<String> strings)
