@@ -1,6 +1,7 @@
 from __future__ import division, print_function
 import sys
 
+#TODO fix this method
 def fib(n):
     if n <= 0:
         return 0
