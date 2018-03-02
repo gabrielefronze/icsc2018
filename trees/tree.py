@@ -74,6 +74,7 @@ class TreeWalker:
                     Node(29)), example2.head),\
                 Node(21, Node(15), Node(42,\
                     Node(25), Node(19)))))
-        #return [example1, example2]
-        return [example1, example2, example3]
+        return [example1, example2]
+        #TODO replace the line above with this one to run the larger example3
+        #return [example1, example2, example3]
 

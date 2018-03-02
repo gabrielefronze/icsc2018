@@ -5,16 +5,16 @@ class Stack:
     def __init__(self):
         self.__list = list()
     def empty(self):
-        pass
+        pass #TODO fill in!
     def push(self, x):
-        pass
+        pass #TODO fill in!
     def pop(self):
-        pass
+        pass #TODO fill in!
 
 def dfs(tree):
     discovered = list()
     s = Stack()
-    # DFS here
+    #TODO DFS here
     return discovered
 
 if __name__ == '__main__':

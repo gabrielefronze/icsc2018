@@ -5,16 +5,16 @@ class Queue:
     def __init__(self):
         self.__list = list()
     def empty(self):
-        pass
+        pass #TODO fill in!
     def enqueue(self, x):
-        pass
+        pass #TODO fill in!
     def dequeue(self):
-        pass
+        pass #TODO fill in!
 
 def bfs(tree):
     discovered = list()
     q = Queue()
-    # BFS here
+    #TODO BFS here
     return discovered
 
 if __name__ == '__main__':
