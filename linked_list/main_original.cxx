@@ -3,7 +3,7 @@
 #include <iostream>
 #include <vector>
 
-#include "linked_list.h"
+#include "linked_list_original.h"
 
 using std::cout;
 using std::endl;
@@ -40,7 +40,6 @@ int main(int argc, char** argv)
             }
         }, "linked list push_front");
 
-    // std::cout<<"Size is "<<l.size()<<std::endl;
     // print_all(l);
 
     time([&l, &N_ITEMS] {
@@ -49,9 +48,6 @@ int main(int argc, char** argv)
                 l.push_back(i);
             }
         }, "linked list push_back");
-
-    // std::cout<<"Size is "<<l.size()<<std::endl;
-    // print_all(l);
 
     // Determining the size many times - should be fast!
     time([&l, &N_ITEMS] {

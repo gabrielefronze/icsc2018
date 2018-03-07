@@ -41,7 +41,6 @@ class linked_list
     public:
         linked_list()
         {
-            listsize=0;
         }
 
         reference operator[](size_type pos)
@@ -57,88 +56,103 @@ class linked_list
 
         void push_front(const_reference t)
         {
-            if (listsize==0)
+            if (!head)
             {
                 head = make_unique<node>(node(t));
-                tail = head.get();
-                listsize=1;
                 return;
             }
 
             auto old_head = std::move(head);
             head = make_unique<node>(node(t));
             head->next = std::move(old_head);
-            listsize++;
         }
 
         void push_back(const_reference t)
         {
-            if (listsize==0)
+            if (!head)
             {
                 head = make_unique<node>(node(t));
-                tail = head.get();
-                listsize=1;
-                return;
-            }
-
-            tail->next = make_unique<node>(node(t));
-            tail = tail->next.get();
-            listsize++;
-        }
-
-        void pop_front()
-        {
-            if (listsize==1)
-            {
-                head = nullptr;
-                tail = nullptr;
-                listsize=0;
-                return;
-            }
-
-            head = std::move(head->next);
-            listsize--;
-        }
-
-        void pop_back()
-        {
-            if (listsize==1)
-            {
-                head = nullptr;
-                tail = nullptr;
-                listsize=0;
                 return;
             }
 
             node* current = &(*head);
-            for(size_type i=0; i<listsize-2; i++){
+            while (current != nullptr)
+            {
+                if (!current->next)
+                {
+                    current->next = make_unique<node>(node(t));
+                    return;
+                }
                 current = &(*current->next);
             }
+        }
 
-            current->next = nullptr;
-            tail = current;
-            listsize--;
-            return;          
+        void pop_front()
+        {
+            if (!head->next)
+            {
+                head = nullptr;
+                return;
+            }
+
+            head = std::move(head->next);
+        }
+
+        void pop_back()
+        {
+            if (!head->next)
+            {
+                head = nullptr;
+                return;
+            }
+
+            node* current = &(*head);
+            while (current != nullptr)
+            {
+                // check the next next node, if it's null, this is the second-to-last node
+                if (!current->next->next)
+                {
+                    current->next = nullptr;
+                    return;
+                }
+                current = &(*current->next);
+            }
         }
 
         bool empty() const
         {
-            listsize=0;
             return !head;
         }
 
         size_type size() const
         {
-            return listsize;
+            if (!head)
+            {
+                return 0;
+            }
+
+            size_type n = 0;
+            node* current = &(*head);
+            while (current->next)
+            {
+                current = &(*current->next);
+                ++n;
+            }
+            return n;
         }
 
         reference front() const
         {
             return head->item;
         }
-        reference back() const
+        reference back()
         {
-            return tail->item;
+            node* current = &(*head);
+            while (current->next)
+            {
+                current = &(*current->next);
+            }
+            return current->item;
         }
 
         iterator begin() const
@@ -160,8 +174,6 @@ class linked_list
 
     private:
         std::unique_ptr<node> head;
-        node* tail;
-        size_type listsize;
 };
 
 template <class T>

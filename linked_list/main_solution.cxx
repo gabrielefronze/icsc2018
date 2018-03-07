@@ -3,7 +3,7 @@
 #include <iostream>
 #include <vector>
 
-#include "linked_list.h"
+#include "linked_list_solution.h"
 
 using std::cout;
 using std::endl;

@@ -19,12 +19,13 @@ class linked_list_node
 
     private:
         explicit linked_list_node(const T& t)
-            : item{t}, next{}
+            : item{t}, next{}, prev{}
         {
         }
 
         T item;
         std::unique_ptr<linked_list_node<T>> next;
+        linked_list_node<T>* prev;
 };
 
 template<class T>
@@ -67,7 +68,9 @@ class linked_list
 
             auto old_head = std::move(head);
             head = make_unique<node>(node(t));
+            head->prev = nullptr;
             head->next = std::move(old_head);
+            head->prev = head.get();
             listsize++;
         }
 
@@ -82,6 +85,7 @@ class linked_list
             }
 
             tail->next = make_unique<node>(node(t));
+            tail->next->prev = tail;
             tail = tail->next.get();
             listsize++;
         }
@@ -96,6 +100,7 @@ class linked_list
                 return;
             }
 
+            head->next->prev = nullptr;
             head = std::move(head->next);
             listsize--;
         }
@@ -110,13 +115,8 @@ class linked_list
                 return;
             }
 
-            node* current = &(*head);
-            for(size_type i=0; i<listsize-2; i++){
-                current = &(*current->next);
-            }
-
-            current->next = nullptr;
-            tail = current;
+            tail = tail->prev;
+            tail->next = nullptr;
             listsize--;
             return;          
         }
